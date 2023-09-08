@@ -1,0 +1,17 @@
+<%- include ("partials/header.ejs") %>
+  <h1>ToDo List</h1>
+  <form action="/add" method="post">
+    <input type="text" name="task" placeholder="Add a new task" required>
+    <button type="submit">Add</button>
+  </form>
+  <ul>
+    <% tasks.forEach((task, index) => { %>
+      <li>
+        <span class="task"><%= task %></span>
+        <form action="/complete/<%= index %>" method="post" style="display: inline;">
+          <button type="submit">Complete</button>
+        </form>
+      </li>
+    <% }); %>
+  </ul>
+  <%- include ("partials/footer.ejs") %>
